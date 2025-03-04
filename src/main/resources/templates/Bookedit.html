@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <title>Book Store - Edit Book</title>
+    
+    <style>
+        body {
+            background-color: #f4f8ff;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #004aad, #007bff);
+            padding: 10px 20px;
+            border-radius: 0 0 10px 10px;
+        }
+        .navbar .btn-back {
+            background-color: white;
+            color: #004aad;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 5px 15px;
+        }
+        .navbar .btn-back:hover {
+            background-color: #ddeeff;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+            transition: 0.3s ease-in-out;
+        }
+        .card:hover {
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+        }
+        .btn-custom {
+            background-color: #004aad;
+            color: white;
+            font-weight: bold;
+        }
+        .btn-custom:hover {
+            background-color: #003380;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <!-- Edit Book Form -->
+    <div class="container my-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card p-4">
+                <h3 class="text-center text-primary">📘 Edit Book</h3>
+                <form th:action="@{/savebook}" method="post" th:object="${book}">
+                    <input type="hidden" name="id" th:value="${book.id}">
+                    
+                    <div class="mb-3">
+                        <label class="form-label">📖 Book Name</label>
+                        <input type="text" class="form-control" name="bookname" th:value="${book.bookname}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">✍️ Author</label>
+                        <input type="text" class="form-control" name="author" th:value="${book.author}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">💲 Price</label>
+                        <input type="text" class="form-control" name="price" th:value="${book.price}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">📅 Published Date</label>
+                        <input type="date" class="form-control" name="publisheddate" th:value="${book.publisheddate}" required>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-custom">✔️ Update Book</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

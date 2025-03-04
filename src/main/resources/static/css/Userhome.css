@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+
+label{
+	color:white;
+}
+.mb-3 input[type='text']{
+	color: white;
+}
+.nav-link{
+	color: white;
+}
+.text-center{
+	color: white;
+}

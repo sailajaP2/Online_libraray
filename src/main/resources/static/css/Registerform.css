@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+*{
+	background-image:url('/images/moon.jpg');
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+    
+}
+label{
+	color:white;
+}
+.mb-3 input[type='text']{
+	color: white;
+}
+.nav-link{
+	color: white;
+}
+.text-center{
+	color: white;
+}

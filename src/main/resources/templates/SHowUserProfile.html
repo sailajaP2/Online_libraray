@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Smooth background with linear gradient */
+        body {
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        /* Centering the card */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Profile Card Styling */
+        .card {
+            background: linear-gradient(145deg, #ffffff, #e3f2fd);
+            color: #003366;
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            width: 480px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-100px);
+            animation: slideIn 1s ease-out forwards;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Card Hover Effect */
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Smooth animation for card */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Profile Image */
+        .card img {
+            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            border: 5px solid #0055a4;
+            margin-bottom: 15px;
+        }
+
+        /* Name */
+        .card h5 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #003366;
+        }
+
+        /* Profile details */
+        .card p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Icons */
+        .icon {
+            font-size: 1.6rem;
+            color: #0055a4;
+            margin-right: 10px;
+        }
+
+        /* Button Container */
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* Buttons */
+        .btn-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Back Button */
+        .btn-back {
+            background-color: #0055a4;
+            color: white;
+        }
+
+        .btn-back:hover {
+            background-color: #003366;
+        }
+
+        /* Edit Profile Button */
+        .btn-edit {
+            background-color: #ffcc00;
+            color: #001a33;
+        }
+
+        .btn-edit:hover {
+            background-color: #e6b800;
+        }
+
+        /* Button Icons */
+        .btn-action i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div th:if="${user != null}" class="card">
+            <h5><i class="fas fa-user icon"></i> <span th:text="${user.name}"></span></h5>
+            <p><i class="fas fa-venus-mars icon"></i> Gender: <span th:text="${user.gender}"></span></p>
+            <p><i class="fas fa-envelope icon"></i> Email: <span th:text="${user.email}"></span></p>
+            <p><i class="fas fa-map-marker-alt icon"></i> Address: <span th:text="${user.address}"></span></p>
+            <p><i class="fas fa-toggle-on icon"></i> Status: <span th:text="${user.status}"></span></p>
+            <p><i class="fas fa-book icon"></i> Books Borrowed: <span th:text="${user.listofbooks.size()}"></span></p>
+
+            <!-- Buttons -->
+            <div class="btn-container">
+                <a href="Userhome" class="btn-action btn-back">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+                <a href="updateuser" class="btn-action btn-edit">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </a>
+            </div>
+        </div>
+
+        <!-- Show error message if user is null -->
+        <div th:if="${user == null}" class="card">
+            <h5><i class="fas fa-exclamation-triangle icon" style="color: red;"></i> No User Found</h5>
+            <p>Something went wrong. Please log in again.</p>
+            <a href="/" class="btn-action btn-back">
+                <i class="fas fa-sign-in-alt"></i> Login Again
+            </a>
+        </div>
+    </div>
+</body>
+</html>

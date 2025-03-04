@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popup Example</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<button id="openPopup">Open Popup</button>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+    <p>This is a popup box!</p>
+  </div>
+</div>
+
+<script>
+document.getElementById("openPopup").addEventListener("click", function() {
+	  document.getElementById("popup").style.display = "block";
+	});
+
+	document.querySelector(".close").addEventListener("click", function() {
+	  document.getElementById("popup").style.display = "none";
+	});
+
+	window.addEventListener("click", function(event) {
+	  if (event.target == document.getElementById("popup")) {
+	    document.getElementById("popup").style.display = "none";
+	  }
+	});
+
+</script>
+</body>
+</html>

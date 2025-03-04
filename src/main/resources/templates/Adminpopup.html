@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popup Example</title>
+<link rel="stylesheet" href="Gunacssfile.css"  th:href="@{/css/Gunacssfile.css}"/>
+</head>
+<body>
+<div class="wrapper">
+<h2> want see the book</h2>
+  <div class="btn-group">
+ 
+  <a th:href="${booklink}" class="btn-yes"> <button>yes</button></a>
+  <a href="http://localhost:8080/Adminmybook" class="btn-no"> <button>No</button></a>
+    
+  
+  </div>
+</div>
+</body>
+</html>

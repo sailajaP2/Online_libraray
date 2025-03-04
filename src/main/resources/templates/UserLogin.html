@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="LoginForm.css" th:href="@{/css/LoginForm.css}" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Custom styling for error message */
+        #errorContainer {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid red;
+            background-color: rgba(255, 0, 0, 0.1);
+            color: red;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <form id="loginForm">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Email" required name="email" id="email">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required name="password" id="password">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="user_register">Dont have account Register?</a>
+            </div>
+            <button type="button" class="btn" id="loginButton">Login</button>
+            <div id="errorContainer">
+                <span id="errorMessage">Invalid credentials. Please try again.</span>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#loginButton').click(function () {
+                const loginData = {
+                    email: $('#email').val(),
+                    password: $('#password').val()
+                };
+
+                $.ajax({
+                    url: '/login',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(loginData),
+                    success: function (response) {
+                        if (response.status === 'admin') {
+                            window.location.href = '/adminfirstsite';
+                        } else if (response.status === 'user') {
+                            window.location.href = '/Userhome';
+                        } else {
+                            $('#errorContainer').show();
+                        }
+                    },
+                    error: function () {
+                        $('#errorMessage').text('An error occurred. Please try again later.');
+                        $('#errorContainer').show();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

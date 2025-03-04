@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>UpwardIQ Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+       <link rel="stylesheet" href="Adminnav.css" th:href="@{/css/Adminnav.css}"/>
+   
+</head>
+<body>
+<header th:fragment="topnav">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Book Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="/adminfirstsite">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="getAdminavailablebooks">Available Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="getallusers">Users Info</a></li>
+                    <li class="nav-item"><a class="nav-link" href="getAllsuggests">View Suggested Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="getInactiveBooks">Inactive Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="getInactiveUsers">Inactive Users</a></li>
+                </ul>
+                <a class="nav-link me-3" href="book_register">Add New Books</a>
+                <button class="logout-btn" onclick="confirmLogout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function confirmLogout() {
+            if (confirm("Are you sure you want to logout?")) {
+                window.location.href = "/logoutuser"; // Change this URL to your actual logout endpoint
+            }
+        }
+    </script>
+</header>
+</body>
+</html>

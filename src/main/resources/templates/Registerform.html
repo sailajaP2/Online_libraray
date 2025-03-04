@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Book Store - User Register</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        font-family: 'Poppins', sans-serif;
+        color: #fff;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        padding: 0;
+      }
+
+      .form-section {
+        padding: 2rem;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+
+      .image-section {
+        background: url('images/register.webp') center/cover no-repeat;
+        min-height: 450px;
+      }
+
+      h3 {
+        color: #1e3c72;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        font-weight: 600;
+        color: #555;
+      }
+
+      .form-control {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      .form-control:focus {
+        border-color: #1e3c72;
+        box-shadow: 0 0 8px rgba(30, 60, 114, 0.3);
+      }
+
+      .btn-primary {
+        background: linear-gradient(to right, #1e3c72, #2a5298);
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(to right, #1e3c72, #3b5998);
+      }
+
+      @media (max-width: 768px) {
+        .image-section {
+          display: none;
+        }
+
+        .form-section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container d-flex flex-wrap">
+      <div class="image-section col-md-6"></div>
+      <div class="form-section col-md-6">
+        <h3>User Register</h3>
+        <form id="registerForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-control" id="gender" name="gender" required>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById('registerForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = {
+          name: document.getElementById('name').value,
+          gender: document.getElementById('gender').value,
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value,
+          address: document.getElementById('address').value
+        };
+
+        fetch('/save', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              // Show success message
+              alert('Your details have been saved successfully.');
+              window.location.href = '/';
+              // Wait for 2 seconds and navigate to the login page
+             
+            } else {
+              alert(data.message || 'Registration failed. Please try again.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+          });
+      });
+    </script>
+  </body>
+</html>

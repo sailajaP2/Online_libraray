@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Book Store</title>
+    <link rel="stylesheet" href="Adminnav.css" th:href="@{/css/Adminnav.css}"/>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      
+        img {
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div th:insert="Adminnav.html::topnav"></div>
+    
+    <div class="container text-center my-5">
+        <h1>Welcome to the Book Store</h1>
+        <h5>
+            In the heart of every town, city, and village lies a sanctuary of knowledge and imagination: the library.
+            With hushed corridors and shelves adorned with countless volumes, the library stands as a testament to humanity's collective wisdom.
+            It offers a treasure trove of literature, history, science, and art, welcoming seekers of knowledge from all walks of life.
+        </h5>
+        <img src="/images/Library.jpg" width="100%" class="img-fluid" />
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

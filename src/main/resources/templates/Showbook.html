@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup - Book View</title>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Body Styling */
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Popup Box */
+        .wrapper {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Title */
+        h2 {
+            color: white;
+            font-weight: 600;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* Button Group */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            width: 130px;
+            padding: 12px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-yes {
+            background: #00c6ff;
+            color: white;
+        }
+
+        .btn-yes:hover {
+            background: #0072ff;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.5);
+        }
+
+        .btn-no {
+            background: #ff4b2b;
+            color: white;
+        }
+
+        .btn-no:hover {
+            background: #ff1a1a;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 26, 26, 0.5);
+        }
+
+        /* Icons */
+        .btn-custom i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <h2>📖 Do you want to see the book?</h2>
+    <div class="btn-group">
+        <a th:href="${booklink}" class="btn-custom btn-yes">
+            <i class="fa-solid fa-book-open"></i> Yes
+        </a>
+        <a href="http://localhost:8080/mybook" class="btn-custom btn-no">
+            <i class="fa-solid fa-times-circle"></i> No
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
