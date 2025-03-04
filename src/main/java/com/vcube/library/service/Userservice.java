@@ -26,7 +26,7 @@ public class Userservice {
 	}
 	public List<User> getallUsers(){
 		
-		List<User> all = repo.findAll();
+		List<User> all = repo.findAllactiveUsers();
 		return all;
 	}
 	public void deleteuserByid(int id) {

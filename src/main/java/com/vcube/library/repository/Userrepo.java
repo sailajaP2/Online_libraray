@@ -25,6 +25,9 @@ public interface Userrepo extends JpaRepository<User, Integer>{
 	 @Query("SELECT u FROM User u WHERE u.status = 'InActive'")
 	    List<User> findAllInactiveUsers();
 	 
+	 @Query("SELECT u FROM User u WHERE u.status = 'Active'")
+	    List<User> findAllactiveUsers();
+	 
 	 @Modifying
 	 @Transactional
 	 @Query("UPDATE User u SET u.status = 'Active' WHERE u.id = :id")
