@@ -25,7 +25,7 @@ public class Userservice {
 		return res;
 	}
 	public List<User> getallUsers(){
-		
+		 System.out.println("hiiii");
 		List<User> all = repo.findAllactiveUsers();
 		return all;
 	}
